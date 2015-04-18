@@ -22,6 +22,9 @@ MIT License
 * [jade](https://github.com/jadejs/jade)
 * [morgan](https://github.com/expressjs/morgan)
 * [serve-static](https://github.com/expressjs/serve-static)
+* [mocha](https://github.com/mochajs/mocha)
+* [chai](https://github.com/chaijs/chai)
+* [supertest](https://github.com/visionmedia/supertest)
 
 ## Contributing Code
 Contributions are invited
