@@ -1,13 +1,12 @@
-# unicode-webapp
-[![Build Status](https://magnum.travis-ci.com/rWolstenholme/unicode-webapp.svg?token=Kvy1xY96uToUTr3WpW91)](https://magnum.travis-ci.com/rWolstenholme/unicode-webapp)
+# unicode-webapp [![Build Status](https://magnum.travis-ci.com/rWolstenholme/unicode-webapp.svg?token=Kvy1xY96uToUTr3WpW91)](https://magnum.travis-ci.com/rWolstenholme/unicode-webapp)
 A web-app written in node.js to provide information about Unicode entered. In active development by Ryan Wolstenholme as my ENGR-489 project at Victoria University of Wellington.
 
 ## Demo
 URL goes here
 
 ## Functionality
-*Serving up a webpage
-*More to come! Naturally
+* Serving up a webpage
+* More to come! Naturally
 
 ## License
 unicode-webapp is released under the MIT license. [Full license text](LICENSE)
