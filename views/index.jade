@@ -1,5 +1,19 @@
 extends layout
 
+block head-extras
+    link(rel='stylesheet', href='/stylesheets/index.css')
+
 block content
-  h1= title
-  p Welcome to #{title}
+    div.jumbotron
+        h1 Welcome to #{title}
+        p Do stuff with unicode.
+        p
+            a.btn(href='about') Learn more about the site
+            a.btn(href='unicode') Learn more about Unicode
+
+    form#searchForm(role="form", action="search")
+        textarea#search(name="inp",form="searchForm", placeholder="Enter some text")
+        button#submit(type="submit")
+            i.fa.fa-flask.fa-5x
+            br
+            h2(style="margin:0") Go!
