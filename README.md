@@ -21,7 +21,7 @@ MIT License
 * [express](https://github.com/strongloop/express)
 * [jade](https://github.com/jadejs/jade)
 * [morgan](https://github.com/expressjs/morgan)
-* [serve-favicon](https://github.com/expressjs/serve-favicon)
+* [serve-static](https://github.com/expressjs/serve-static)
 
 ## Contributing Code
 Contributions are invited
