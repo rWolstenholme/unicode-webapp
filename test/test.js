@@ -18,10 +18,16 @@ describe('favicon', function() {
 });
 
 describe('search page', function() {
-    it('should return 200 status', function(done) {
+    it('should return 200 status with valid search', function(done) {
         request
             .get('/search?inp=asdfas')
             .expect(200, done)
+    });
+
+    it('should return 400 status with no search string', function(done) {
+        request
+            .get('/search')
+            .expect(400, done)
     });
 
     it('should contain search string', function(done) {
