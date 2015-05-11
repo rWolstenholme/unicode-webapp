@@ -1,5 +1,16 @@
 extends layout
 
+block head-extras
+    link(rel='stylesheet', href='/stylesheets/search.css')
+
 block content
 
     h1(style="padding:30px") You searched for #{search}
+    ul.charList
+        each c in chars
+            li
+                a.tooltip(href="#")= c.name
+                    span
+                        ul
+                            each val,key in c
+                                li= key + " ~ " + val
