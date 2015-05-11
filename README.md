@@ -25,6 +25,8 @@ MIT License
 * [mocha](https://github.com/mochajs/mocha)
 * [chai](https://github.com/chaijs/chai)
 * [supertest](https://github.com/visionmedia/supertest)
+* [node-redis](https://github.com/mranney/node_redis)
+* [xml-stream](https://github.com/assistunion/xml-stream)
 
 ## Contributing Code
 Contributions are invited

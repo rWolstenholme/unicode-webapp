@@ -14,8 +14,10 @@
     "morgan": "~1.5.1",
     "serve-static": "~1.9.2",
     "mocha": "~2.2.4",
-    "chai" : "~2.2.0",
-    "supertest" : "~0.15.0"
+    "chai" : "~2.3.0",
+    "supertest" : "~0.15.0",
+	"xml-stream" : "~0.4.5",
+    "redis" : "~0.12.1"
   },
   "scripts": {
     "test": "mocha"
