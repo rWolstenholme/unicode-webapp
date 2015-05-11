@@ -5,7 +5,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
+var search = require('./routes/searchres')
+var idx = require('./routes');
+var charPage = require('./routes/charPage')
 
 var app = express();
 
@@ -21,7 +23,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+app.get('/', idx);
+app.get('/search', search)
+app.get('/',charPage)
 
 // serve up favicons
 app.use(serveStatic('public/favicons'))
