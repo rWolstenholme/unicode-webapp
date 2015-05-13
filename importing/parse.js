@@ -1,36 +1,56 @@
 var fs = require('fs'),
     xmlStream = require('xml-stream'),
-    redis = require('redis');
+    redis = require('redis'),
+    zlib = require('zlib');
 
-function sendToDb(key, value){
-    redClient.set(key, JSON.stringify(value), function (err, res) {
+var zippedName = 'ucd.all.flat.zip';
+var unzippedName = 'ucd.all.flat.xml';
+
+//prepareFiles();
+prepareParse();
+
+function prepareFiles(){
+    fs.exists(unzippedName,function(err, exists) {
+        if (!exists) {
+            var gunzip = zlib.createGunzip();
+            var inp = fs.createReadStream(zippedName);
+            var out = fs.createWriteStream(unzippedName);
+            inp.pipe(gunzip)
+                .pipe(out)
+                .on('end', function () {
+                    prepareParse()
+                });
+        }
+        else{
+            prepareParse();
+        }
     });
 }
 
-var chars = [];
+function prepareParse(){
+    var redClient = redis.createClient();
+    redClient.on("error", function (err) {
+        console.log("Error " + err);
+    });
+    console.log("Waiting for database connection");
+    redClient.on('connect', function() {
+        console.log("Connected to database");
+        parse(redClient);
+    });
+}
 
-var dataStream = fs.createReadStream('ucd.all.flat.xml');
-var xmlStream = new xmlStream(dataStream);
+function parse(redClient){
+    var xmlStr = new xmlStream(fs.createReadStream(unzippedName));
 
-var redClient = redis.createClient();
-redClient.on("error", function (err) {
-    console.log("Error " + err);
-});
-console.log("Waiting for database connection");
-redClient.on('connect', function() {
-    console.log("Connected to database");
-    parse();
-});
+    var start = (new Date).getTime();
+    var count = 0;
 
-var start = (new Date).getTime();
-var count = 0;
-
-function parse(){
+    var chars = [];
     var aliases = [];
 
-    xmlStream.preserve('char', true);
-    xmlStream.collect('name-alias');
-    xmlStream.on('endElement: char', function(ch){
+    xmlStr.preserve('char', true);
+    xmlStr.collect('name-alias');
+    xmlStr.on('endElement: char', function(ch){
         var charPoint = ch.$.cp;
         var char = {
             'name' : ch.$.na,
@@ -44,14 +64,14 @@ function parse(){
         };
         chars.push(char)
         aliases = [];
-        sendToDb(charPoint,char);
-        //if(count%100==0) console.log("Parsed "+count+" at charpoint "+charPoint);
+        redClient.set(charPoint, JSON.stringify(char));
+        if(count%100==0) console.log("Parsed "+count+" at charpoint "+charPoint);
         count++;
     });
-    xmlStream.on('endElement: name-alias', function(na){
+    xmlStr.on('endElement: name-alias', function(na){
         aliases.push({alias:na.$.alias,type:na.$.type});
     });
-    xmlStream.on('end',function(){
+    xmlStr.on('end',function(){
         console.log("Parsing "+count+" elements complete in: "+(((new Date).getTime()-start))+"ms");
         process.exit(0);
     });
