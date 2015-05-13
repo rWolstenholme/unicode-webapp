@@ -1,7 +1,8 @@
 var fs = require('fs'),
     xmlStream = require('xml-stream'),
     redis = require('redis'),
-    zlib = require('zlib');
+    zlib = require('zlib'),
+    cpf = require('../charpointFormatting.js');
 
 var zippedName = 'ucd.all.flat.zip';
 var unzippedName = 'ucd.all.flat.xml';
@@ -53,6 +54,8 @@ function parse(redClient){
     xmlStr.on('endElement: char', function(ch){
         var charPoint = ch.$.cp;
         var char = {
+            'charPoint' : ch.$.cp,
+            'char' : cpf.dbToChar(ch.$.cp),
             'name' : ch.$.na,
             'age' : ch.$.age,
             'block' : ch.$.blk,
