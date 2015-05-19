@@ -1,13 +1,13 @@
 extends layout
 
 block head-extras
-    link(rel='stylesheet', href='/stylesheets/search.css')
+    link(rel='stylesheet', href='/stylesheets/char.css')
+    title= char.name+' UW Character'
 
 block content
 
-    h1(style="padding:30px") You searched for #{char}
-    a.tooltip(href="#")= char.name
-        span
-            ul
-                each val,key in char
-                    li= key + " ~ " + val
+    h1(style="padding:30px") You searched for #{char.char}
+    char.name
+        ul
+            each val,key in char
+                li= key + " ~ " + val

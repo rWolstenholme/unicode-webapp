@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', idx);
 app.get('/search', search)
-app.get('/',charPage)
+app.get('/*',charPage)
 
 // serve up favicons
 app.use(serveStatic('public/favicons'))

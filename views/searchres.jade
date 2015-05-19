@@ -2,6 +2,7 @@ extends layout
 
 block head-extras
     link(rel='stylesheet', href='/stylesheets/search.css')
+    title= search+' UW search'
 
 block content
 
@@ -9,7 +10,7 @@ block content
     ul.charList
         each c in chars
             li
-                a.tooltip(href="#")= c.name
+                a.tooltip(href='/'+c.charPoint)= c.name
                     span
                         ul
                             each val,key in c
