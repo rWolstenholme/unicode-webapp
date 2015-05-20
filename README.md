@@ -2,7 +2,7 @@
 A web-app written in node.js to provide information about Unicode entered. In active development by Ryan Wolstenholme as my ENGR-489 project at Victoria University of Wellington.
 
 ## Demo
-Try it at [lovable.ninja](http://lovable.ninja)
+Try it at [unicode.website](http://unicode.website)
 
 ## Functionality
 * Serving up a webpage
