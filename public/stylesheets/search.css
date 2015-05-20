@@ -2,10 +2,15 @@
     display: inline-block;
 }
 
-a.tooltip {outline:none; }
+a.tooltip {
+    outline:none;
+    color: inherit;
+}
 a.tooltip strong {line-height:30px;}
 a.tooltip:hover {text-decoration:none;}
 a.tooltip span {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
     z-index:10;display:none; padding:14px 20px;
     margin-top:-30px; margin-left:28px;
     width:300px; line-height:16px;
@@ -22,8 +27,19 @@ a.tooltip span
     box-shadow: 5px 5px 8px #CCC;
 }
 
-.paper{
-    width: 90%;
+#paperHolder{
+    text-align:center;
+}
+
+#paper{
+    text-align:left;
+    display: inline-block;
+    word-wrap: break-word;
+    width:90%;
+    margin-left:auto;
+    margin-right:auto;
+    font-family: monospace;
+    font-size: 40px;
     min-height: 20px;
     padding: 19px;
     margin-bottom: 20px;

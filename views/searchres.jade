@@ -7,12 +7,11 @@ block head-extras
 block content
 
     h1(style="padding:30px") You searched for #{search}
-    div.paper
-        ul.charList
+    div#paperHolder
+        div#paper
             each c in chars
-                li
-                    a.tooltip(href='/'+c.charPoint)= c.name
-                        span
-                            ul
-                                each val,key in c
-                                    li= key + " ~ " + val
+                a.tooltip(href='/'+c.charPoint)= c.char
+                    span
+                        ul
+                            each val,key in c
+                                li= key + " ~ " + val
