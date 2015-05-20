@@ -4,7 +4,8 @@
   border-radius: 10px;
   color: #555;
   height: 200px;
-  width: 600px;
+  max-width: 600px;
+  width:80%;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   padding: 6px 12px;
   margin: 20px;
@@ -66,7 +67,7 @@
   text-align: center;
 }
 .jumbotron {
-  padding: 30px 60px;
+  padding: 60px 30px 50px 30px;
   background-color: #eee;
 }
 h1 {
@@ -88,7 +89,7 @@ h1 {
   color: #fff;
   background-color: #337ab7;
   text-decoration: none;
-  margin: 0 15px 0 0;
+  margin: 0 15px 10px 0;
 }
 .btn:hover {
   background-color: #286090;
