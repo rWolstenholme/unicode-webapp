@@ -15,8 +15,8 @@ module.exports.dbToChar = function dbToChar(db){
 };
 
 module.exports.charToDb = function charToDb(char) {
-    var cp = char.codePointAt(0);
-    var db = char.toString(16).toUpperCase();
+    var cp = char.charCodeAt(0);
+    var db = cp.toString(16).toUpperCase();
     if (db.length < 4) {
         db = ("000" + db).slice(-4);
     }
