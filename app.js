@@ -8,6 +8,8 @@ var bodyParser = require('body-parser');
 
 var search = require('./routes/searchres')
 var idx = require('./routes');
+var unicode = require('./routes/unicode')
+var about = require('./routes/about')
 var charPage = require('./routes/charPage')
 
 var app = express();
@@ -26,6 +28,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', idx);
 app.get('/search', search)
+app.get('/about', about)
+app.get('/unicode', unicode)
 app.get('/*',charPage)
 
 // serve up favicons
