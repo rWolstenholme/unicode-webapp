@@ -26,14 +26,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// serve up statics
+app.use(serveStatic('public/statics'))
+
 app.get('/', idx);
 app.get('/search', search)
 app.get('/about', about)
 app.get('/unicode', unicode)
 app.get('/*',charPage)
-
-// serve up favicons
-app.use(serveStatic('public/favicons'))
 
 // error handlers
 
