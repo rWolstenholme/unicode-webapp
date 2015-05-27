@@ -54,16 +54,16 @@ function parse(redClient){
     xmlStr.on('endElement: char', function(ch){
         var charPoint = ch.$.cp;
         var char = {
-            'charPoint' : ch.$.cp,
-            'char' : cpf.dbToChar(ch.$.cp),
-            'name' : ch.$.na,
-            'age' : ch.$.age,
-            'block' : ch.$.blk,
-            'generalCategory' : ch.$.gc,
-            'combiningClass' : ch.$.ccc,
-            'decompositionType' : ch.$.dt,
-            'decompositionMapping' : ch.$.dm,
-            'aliases' : aliases
+            'Character' : cpf.dbToChar(ch.$.cp),
+            'Character Point' : ch.$.cp,
+            'Name' : ch.$.na,
+            'Age' : ch.$.age,
+            'Block Name' : ch.$.blk,
+            'General Catagory' : ch.$.gc,
+            'Combining Class' : ch.$.ccc,
+            'Decomposition Type' : ch.$.dt,
+            'Decomposition Mapping' : ch.$.dm,
+            'Aliases' : aliases
         };
         chars.push(char)
         aliases = [];

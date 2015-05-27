@@ -6,9 +6,9 @@ block head-extras
 
 block content
 
-    div#charBig= char.char
-    h1(style="padding:30px") You searched for #{char.char}
-    char.name
+    div#charBig= char.Character
+    h1(style="padding:30px") You searched for #{char.Character}
+    char.Name
         ul
             each val,key in char
                 li= key + " ~ " + val

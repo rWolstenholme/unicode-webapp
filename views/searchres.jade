@@ -10,7 +10,7 @@ block content
     div#paperHolder
         div#paper
             each c in chars
-                a.tooltip(href='/'+c.charPoint)= c.char
+                a.tooltip(href='/'+c['Character Point'])= c.Character
                     span
                         ul
                             each val,key in c
