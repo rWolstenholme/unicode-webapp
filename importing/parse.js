@@ -63,7 +63,9 @@ function parse(redClient){
             'Combining Class' : ch.$.ccc,
             'Decomposition Type' : ch.$.dt,
             'Decomposition Mapping' : ch.$.dm,
-            'Aliases' : aliases
+            'Grapheme Base' : ch.$.Gr_Base,
+            'Grapheme Extended' : ch.$.Gr_Ext,
+            'Aliases' : JSON.stringify(aliases)
         };
         chars.push(char)
         aliases = [];

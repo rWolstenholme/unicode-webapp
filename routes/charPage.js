@@ -12,7 +12,7 @@ router.get(/^\/[0-9A-F]{4,6}$/, function(req, res, next) {
 router.get(/^\/U\+[0-9A-F]{4,6}$/, function(req, res, next) {
   var path = req.path.replace('/U+','');
   redClient.get(path,function(err,result){
-    res.render('charPage', { 'char': JSON.parse(result) });
+    res.render('charPage', {'char': JSON.parse(result)});
   });
 });
 
