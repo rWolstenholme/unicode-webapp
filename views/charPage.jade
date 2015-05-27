@@ -2,7 +2,8 @@ extends layout
 
 block head-extras
     link(rel='stylesheet', href='/stylesheets/char.css')
-    title= char.name+' UW Character'
+    title= char.Name+' UW Character'
+    meta(description='Information on the unicode character '+char.Name)
 
 block content
 
@@ -12,3 +13,4 @@ block content
         ul
             each val,key in char
                 li= key + " ~ " + val
+    div
