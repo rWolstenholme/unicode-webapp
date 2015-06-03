@@ -22,10 +22,19 @@ router.get('/search', function(req, res, next) {
         redClient.get(c,function(err,result){
             chars.push(JSON.parse(result));
             if(chars.length==input.length){
-                res.render('searchres', { 'search': input, 'chars': chars });
+                CharsLoaded(res,input,chars);
             }
         });
     };
 });
+
+function CharsLoaded(res, search, chars){
+    var realCount = 0;
+    for (c of chars){
+        console.log(c);
+        if (c['Combining Class'] == "0") realCount++;
+    }
+    res.render('searchres', { 'search': search, 'chars': chars, 'realCount': realCount});
+}
 
 module.exports = router;

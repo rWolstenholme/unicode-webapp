@@ -9,13 +9,15 @@ block head-extras
 block content
 
     h1(style="padding:30px") You searched for #{search}
+    h3 Character point count: #{chars.length}
+    h3 Displayed character count: #{realCount}
     button.toggle(onclick="toggleDisp()") Display as string
     div#paperHolder
         div#paper
             div#asText #{search}
             ul#asBoxed
                     each c in chars
-                        li.charHolder
+                        li.charHolder(class=c['Combining Class'] == "0" ? "" : "comb")
                             a.tooltip(href='/'+c['Character Point'])!= c.Character + "</br>" + "U+" + c['Character Point']
                                 span
                                     ul
