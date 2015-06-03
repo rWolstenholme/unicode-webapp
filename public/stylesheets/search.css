@@ -48,3 +48,29 @@ a.tooltip span
     box-shadow: 0 1px 4px rgba(0,0,0,.3)
     ,0 0 40px rgba(128,128,128,.1)inset
 }
+
+#asText{
+    display: none;
+}
+
+#asBoxed{
+
+}
+
+.charHolder
+{
+    display: inline-block;
+    width:70px;
+    height:70px;
+    line-height:35px;
+    margin:6px;
+    font-size:18px;
+    text-align:center;
+    background-color: #a0a0a0;
+}
+
+.toggle
+{
+    margin:0px 30px;
+    padding:10px 30px;
+}
