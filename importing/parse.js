@@ -6,8 +6,9 @@ var punycode = require('punycode');
 
 var zippedName = 'ucd.all.flat.zip';
 var unzippedName = 'ucd.all.flat.xml';
+var imPath = "../public/statics/images";
+var images = {};
 
-//prepareFiles();
 prepareParse();
 
 function prepareFiles(){
@@ -29,6 +30,11 @@ function prepareFiles(){
 }
 
 function prepareParse(){
+    console.log("Loading images");
+    loadIms("android");
+    loadIms("twitter");
+    loadIms("windows");
+    loadIms("apple");
     var redClient = redis.createClient();
     redClient.on("error", function (err) {
         console.log("Error " + err);
@@ -53,6 +59,8 @@ function parse(redClient){
     xmlStr.collect('name-alias');
     xmlStr.on('endElement: char', function(ch){
         var codePoint = ch.$.cp;
+        var hasEmoji = images.hasOwnProperty(codePoint);
+        var emoji = hasEmoji ? images[codePoint] : [];
         var char = {
             'Character' : punycode.ucs2.encode(["0x"+codePoint]),
             'Code Point' : codePoint,
@@ -65,7 +73,9 @@ function parse(redClient){
             'Decomposition Mapping' : ch.$.dm,
             'Grapheme Base' : ch.$.Gr_Base,
             'Grapheme Extended' : ch.$.Gr_Ext,
-            'Aliases' : JSON.stringify(aliases)
+            'Aliases' : JSON.stringify(aliases),
+            'hasEmoji' : hasEmoji,
+            'emoji' : emoji
         };
         chars.push(char)
         aliases = [];
@@ -81,3 +91,30 @@ function parse(redClient){
         process.exit(0);
     });
 };
+
+function loadIms(type){
+    console.log("Loading "+type+" images");
+    var arrFiles = fs.readdirSync(imPath+"/"+type);
+    arrFiles.forEach(function(im){
+        im = im.replace(type+"_",'');
+        im = im.replace(".png",'');
+        im = im.toUpperCase();
+        var components = im.split('_');
+        addIm(components,type);
+    });
+}
+
+function addIm(components,type){
+    if(components.length==1) {
+        var s = components[0];
+
+        if(!images.hasOwnProperty(s)){
+            images[s] = [];
+        };
+
+        images[s].push(type);
+    }
+    else if(components.length>1){
+
+    }
+}

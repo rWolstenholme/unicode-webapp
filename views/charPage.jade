@@ -12,6 +12,27 @@ block content
     ul#details
         each val,key in char
             li= key + " ~ " + val
+    if char.hasEmoji
+        table#emoji
+            tr
+                td Apple
+                td Android
+                td Windows
+                td Twitter
+            tr
+                td
+                    if char.emoji.indexOf("apple")!=-1
+                        img(src="images/apple/apple_"+char['Code Point'].toLowerCase()+".png")
+                td
+                    if char.emoji.indexOf("android")!=-1
+                        img(src="images/android/android_"+char['Code Point'].toLowerCase()+".png")
+                td
+                    if char.emoji.indexOf("windows")!=-1
+                        img(src="images/windows/windows_"+char['Code Point'].toLowerCase()+".png")
+                td
+                    if char.emoji.indexOf("twitter")!=-1
+                        img(src="images/twitter/twitter_"+char['Code Point'].toLowerCase()+".png")
+
     //div#prev
     //    a(href='/'+prev['Character Point']) #{'Previous:'+prev.Character+'-'+prev.Name}
     //div#next
