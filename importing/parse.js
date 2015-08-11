@@ -1,8 +1,8 @@
 var fs = require('fs'),
     xmlStream = require('xml-stream'),
     redis = require('redis'),
-    zlib = require('zlib'),
-    cpf = require('../charpointFormatting.js');
+    zlib = require('zlib');
+var punycode = require('punycode');
 
 var zippedName = 'ucd.all.flat.zip';
 var unzippedName = 'ucd.all.flat.xml';
@@ -54,7 +54,7 @@ function parse(redClient){
     xmlStr.on('endElement: char', function(ch){
         var codePoint = ch.$.cp;
         var char = {
-            'Character' : cpf.dbToChar(ch.$.cp),
+            'Character' : punycode.ucs2.encode(["0x"+codePoint]),
             'Code Point' : codePoint,
             'Name' : ch.$.na,
             'Age' : ch.$.age,

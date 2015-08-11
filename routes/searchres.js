@@ -3,7 +3,7 @@ var router = express.Router();
 var redis = require('redis');
 var redClient = redis.createClient();
 var punycode = require('punycode');
-var cpf = require('../charpointFormatting.js');
+var gs = require('../lib/grapheme-splitter.js').graphemeSplitter();
 
 router.get('/search', function(req, res, next) {
     if (!req.query.hasOwnProperty("inp")) {
@@ -41,9 +41,8 @@ function CharsLoaded(res, search, chars){
     var realCount = 0;
     var utf8 = 0;
 
-    for (c of chars){
-        if (c['Combining Class'] != null && c['Combining Class'] == "0") realCount++;
-    }
+    realCount = gs.countGraphemes(search);
+
     res.render('searchres', { 'search': search, 'chars': chars, 'realCount': realCount});
 }
 

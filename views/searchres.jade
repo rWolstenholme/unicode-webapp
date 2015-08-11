@@ -8,17 +8,18 @@ block head-extras
 
 block content
 
-    h1(style="padding:30px") You searched for #{search}
-    h3 Code point count: #{chars.length}
-    h3 Glyph count: #{realCount}
-    button.toggle(onclick="toggleDisp()") Display as string
+    div#topBits(style="padding:30px")
+        h1 You searched for #{search}
+        h3 Code point count: #{chars.length}&nbsp&nbsp&nbsp&nbsp
+            |Grapheme Clusters: #{realCount}
+        button.toggle(onclick="toggleDisp()") Toggle grid display
     div#paperHolder
         div#paper
             div#asText #{search}
             ul#asBoxed
                     each c in chars
                         li.charHolder(class= c['Combining Class'] != null && c['Combining Class'] == "0" ? "" : "comb")
-                            a.tooltip(href='/'+c['Code Point'])!= c.Character + "</br>" + "U+" + c['Code Point']
+                            a.tooltip(href='/U+'+c['Code Point'])!= c.Character + "</br>" + "U+" + c['Code Point']
                                 span
                                     ul
                                         each val,key in c

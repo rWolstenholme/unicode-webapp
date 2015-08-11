@@ -1,3 +1,13 @@
+@font-face {
+    font-family: Symbola;
+    src: url(../fonts/Symbola.ttf);
+}
+
+@font-face {
+    font-family: Unifont;
+    src: url(../fonts/unifont.ttf);
+}
+
 #charBig{
     float:right;
     border: 2px solid #111111;
@@ -7,4 +17,9 @@
     text-align: center;
     line-height: 15vw;
     margin: 30px;
+    font-family:  Symbola, Unifont;
+}
+
+#details{
+    padding-bottom:20px;
 }

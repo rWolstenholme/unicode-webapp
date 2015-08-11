@@ -9,10 +9,9 @@ block content
 
     div#charBig= char.Character
     h1(style="padding:30px") You searched for #{char.Character}
-    char.Name
-        ul
-            each val,key in char
-                li= key + " ~ " + val
+    ul#details
+        each val,key in char
+            li= key + " ~ " + val
     //div#prev
     //    a(href='/'+prev['Character Point']) #{'Previous:'+prev.Character+'-'+prev.Name}
     //div#next
