@@ -30,11 +30,31 @@ router.get('/search', function(req, res, next) {
 
 function CharsLoaded(res, search, chars){
     var realCount = 0;
+    var utf8 = 0;
+    
     for (c of chars){
         console.log(c);
-        if (c['Combining Class'] == "0") realCount++;
+        if (c['Combining Class'] != null && c['Combining Class'] == "0") realCount++;
+
     }
     res.render('searchres', { 'search': search, 'chars': chars, 'realCount': realCount});
+}
+
+function bytesInUtf8(c)
+{
+    codepoint = c;
+    if(codepoint <= 0x7f){
+        return 1;
+    }
+    if(codepoint <= 0x7ff){
+        return 2;
+    }
+    if(codepoint <= 0xffff){
+        return 3;
+    }
+    else{
+        return 4;
+    }
 }
 
 module.exports = router;

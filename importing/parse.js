@@ -52,10 +52,10 @@ function parse(redClient){
     xmlStr.preserve('char', true);
     xmlStr.collect('name-alias');
     xmlStr.on('endElement: char', function(ch){
-        var charPoint = ch.$.cp;
+        var codePoint = ch.$.cp;
         var char = {
             'Character' : cpf.dbToChar(ch.$.cp),
-            'Character Point' : ch.$.cp,
+            'Code Point' : codePoint,
             'Name' : ch.$.na,
             'Age' : ch.$.age,
             'Block Name' : ch.$.blk,
@@ -69,8 +69,8 @@ function parse(redClient){
         };
         chars.push(char)
         aliases = [];
-        redClient.set(charPoint, JSON.stringify(char));
-        if(count%100==0) console.log("Parsed "+count+" at charpoint "+charPoint);
+        redClient.set(codePoint, JSON.stringify(char));
+        if(count%100==0) console.log("Parsed "+count+" at codepoint "+codePoint);
         count++;
     });
     xmlStr.on('endElement: name-alias', function(na){
