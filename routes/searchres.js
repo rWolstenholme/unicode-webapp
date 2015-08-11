@@ -16,19 +16,21 @@ router.get('/search', function(req, res, next) {
     var decoded = punycode.ucs2.decode(input);
 
     var chars = [];
-    console.log(chars);
+    console.log(decoded);
 
-    for (var x = 0; x < input.length; x++)
+    for (var x = 0; x < decoded.length; x++)
     {
-        var n =  decoded[x];
-
-        var hex = cpf.decToDb(n);
-
+        var hex =  decoded[x].toString(16).toUpperCase();
         console.log(hex);
+
+        if (hex.length < 4) {
+            hex = ("000" + hex).slice(-4);
+        }
+
         redClient.get(hex,function(err,result){
-            console.log(err);
+            console.log(err, result);
             chars.push(JSON.parse(result));
-            if(chars.length==input.length){
+            if(chars.length==decoded.length){
                 CharsLoaded(res,input,chars);
             }
         });
