@@ -22,3 +22,11 @@ module.exports.charToDb = function charToDb(char) {
     }
     return db;
 };
+
+module.exports.decToDb = function decToDb(num){
+    var db = num.toString(16).toUpperCase();
+    if (db.length < 4) {
+        db = ("000" + db).slice(-4);
+    }
+    return db;
+}
