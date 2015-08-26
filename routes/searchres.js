@@ -4,6 +4,7 @@ var redis = require('redis');
 var redClient = redis.createClient();
 var punycode = require('punycode');
 var gs = require('../lib/grapheme-splitter.js').graphemeSplitter();
+var _ = require('underscore');
 
 router.get('/search', function(req, res, next) {
     if (!req.query.hasOwnProperty("inp")) {
@@ -31,19 +32,38 @@ router.get('/search', function(req, res, next) {
             console.log(err, result);
             chars.push(JSON.parse(result));
             if(chars.length==decoded.length){
-                CharsLoaded(res,input,chars);
+                charsLoaded(res,input,chars);
             }
         });
     };
 });
 
-function CharsLoaded(res, search, chars){
-    var realCount = 0;
-    var utf8 = 0;
+function charsLoaded(res, search, chars){
 
-    realCount = gs.countGraphemes(search);
+    var realCount = gs.countGraphemes(search);
+    var toGraph = calculateGraphData(chars);
 
-    res.render('searchres', { 'search': search, 'chars': chars, 'realCount': realCount});
+    res.render('searchres', { 'search': search, 'chars': chars, 'realCount': realCount, 'toGraph': toGraph});
+}
+
+function calculateGraphData(chars){
+    var size8 = 8;
+    var size16 = 16;
+    var size32 = 31;
+
+    var blocks = _.chain(chars)
+        .countBy("Block Name")
+        .pairs()
+        .sortBy(0)
+        .value();
+    var ages = _.chain(chars)
+        .countBy("Age")
+        .pairs()
+        .sortBy(0)
+        .value();
+    var sizes = [["UTF-8",size8],["UTF-16",size16],["UTF-32",size32]];
+
+    return {blocks:blocks,ages:ages,sizes:sizes};
 }
 
 function bytesInUtf8(c)

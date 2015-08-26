@@ -4,7 +4,11 @@ block head-extras
     link(rel='stylesheet', href='/stylesheets/search.css')
     title= search+' UW search'
     meta(description='A search result for the '+ search)
-    script(src='/javascript/search.js')
+    link(rel="stylesheet" href='/stylesheets/c3.css')
+    script(src='/javascript/d3.js' charset="utf-8")
+    script(src='/javascript/c3.js')
+    script.
+        var toGraph = !{JSON.stringify(toGraph)}
 
 block content
 
@@ -25,3 +29,7 @@ block content
                                         each val,key in c
                                             li= key + " ~ " + val
                                         li= c['Code Point']
+    div#ages
+    div#blocks
+    div#sizes
+    script(src='/javascript/search.js')
