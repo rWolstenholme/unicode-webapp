@@ -29,7 +29,8 @@ block content
                                         each val,key in c
                                             li= key + " ~ " + val
                                         li= c['Code Point']
-    div#ages
-    div#blocks
-    div#sizes
+        div.flex-container
+            div#ages.flex-item
+            div#blocks.flex-item
+            div#sizes.flex-item
     script(src='/javascript/search.js')

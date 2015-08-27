@@ -53,8 +53,22 @@ a.tooltip span
     display: none;
 }
 
-#asBoxed{
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 30px;
+}
 
+.flex-item {
+    order: 0;
+    align-self: auto;
+    width: 320px;
+}
+
+#sizes{
+    flex-grow:5;
 }
 
 .charHolder
