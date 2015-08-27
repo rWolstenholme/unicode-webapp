@@ -23,3 +23,10 @@
 #details{
     padding-bottom:20px;
 }
+
+#details:after {
+    content: " ";
+    display: block;
+    height: 0;
+    clear: both;
+}
