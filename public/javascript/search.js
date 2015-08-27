@@ -27,6 +27,7 @@ function addPie(title, data){
         donut: {
             title: title,
             label: {
+                threshold:0.02,
                 format: function (value, ratio, id) {
                     return value;
                 }
