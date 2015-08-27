@@ -43,7 +43,7 @@ function addBar(title, data){
         axis: {
             x: {
                 show: false,
-                padding: 0
+                ratio: 1
             },
             y:{
                 tick: {
@@ -56,6 +56,11 @@ function addBar(title, data){
             grouped: false,
             format:{
                 title: function () { return 'Bytes to encode'}
+            }
+        },
+        grid: {
+            x:{
+                show:false
             }
         }
     });

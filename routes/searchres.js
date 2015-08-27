@@ -47,9 +47,8 @@ function charsLoaded(res, search, chars){
 }
 
 function calculateGraphData(chars){
-    var size8 = 8;
-    var size16 = 16;
-    var size32 = 31;
+    var size8 = 0;
+    var size16 = 0;
 
     var blocks = _.chain(chars)
         .countBy("Block Name")
@@ -61,14 +60,21 @@ function calculateGraphData(chars){
         .pairs()
         .sortBy(0)
         .value();
-    var sizes = [["UTF-8",size8],["UTF-16",size16],["UTF-32",size32]];
+
+    for(var i=0;i<chars.length;i++){
+        var char = chars[i];
+        size8 += bytesInUtf8(char);
+        size16 += bytesInUtf16(char);
+    }
+
+    var sizes = [["UTF-8",size8],["UTF-16",size16],["UTF-32",chars.length*4]];
 
     return {blocks:blocks,ages:ages,sizes:sizes};
 }
 
 function bytesInUtf8(c)
 {
-    codepoint = c;
+    var codepoint = c["Code Point"];
     if(codepoint <= 0x7f){
         return 1;
     }
@@ -77,6 +83,17 @@ function bytesInUtf8(c)
     }
     if(codepoint <= 0xffff){
         return 3;
+    }
+    else{
+        return 4;
+    }
+}
+
+function bytesInUtf16(c)
+{
+    var codepoint = c["Code Point"];
+    if(codepoint <= 0xffff){
+        return 2;
     }
     else{
         return 4;
