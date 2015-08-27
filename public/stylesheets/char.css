@@ -20,8 +20,8 @@
     font-family: Sans-Serif, Serif, Symbola, Unifont;
 }
 
-#details{
-    padding-bottom:20px;
+table{
+    padding:20px;
 }
 
 #details:after {
@@ -29,4 +29,16 @@
     display: block;
     height: 0;
     clear: both;
+}
+
+td,th {
+    border-width: 0 0 0 1px;
+    font-size: inherit;
+    margin: 0;
+    overflow: visible;
+    padding: 1em 2em;
+}
+
+table tr:nth-child(2n-1) td {
+    background-color: #f2f2f2;
 }

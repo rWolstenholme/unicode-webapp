@@ -74,8 +74,8 @@ function parse(redClient){
             'Grapheme Base' : ch.$.Gr_Base,
             'Grapheme Extended' : ch.$.Gr_Ext,
             'Aliases' : JSON.stringify(aliases),
-            'hasEmoji' : hasEmoji,
-            'emoji' : emoji
+            'Has Emoji' : hasEmoji,
+            'Emoji' : emoji
         };
         chars.push(char);
         aliases = [];
