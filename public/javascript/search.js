@@ -25,7 +25,12 @@ function addPie(title, data){
             type : 'donut'
         },
         donut: {
-            title: title
+            title: title,
+            label: {
+                format: function (value, ratio, id) {
+                    return value;
+                }
+            }
         }
     });
 }
