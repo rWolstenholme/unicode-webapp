@@ -43,7 +43,19 @@ function charsLoaded(res, search, chars){
     var realCount = gs.countGraphemes(search);
     var toGraph = calculateGraphData(chars);
 
-    res.render('searchres', { 'search': search, 'chars': chars, 'realCount': realCount, 'toGraph': toGraph});
+    res.render('searchres', { 'search': search, 'chars': slimChars(chars), 'realCount': realCount, 'toGraph': toGraph});
+}
+
+function slimChars(chars){
+    return _.map(chars,
+        function(char){
+            return {
+                'Character' : char['Character'],
+                'Code Point' : char['Code Point'],
+                'Name': char['Name'],
+                'Block Name': char['Block Name']
+            }
+        });
 }
 
 function calculateGraphData(chars){

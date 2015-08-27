@@ -25,10 +25,11 @@ block content
                         li.charHolder(class= c['Combining Class'] != null && c['Combining Class'] == "0" ? "" : "comb")
                             a.tooltip(href='/U+'+c['Code Point'])!= c.Character + "</br>" + "U+" + c['Code Point']
                                 span
-                                    ul
+                                    table
                                         each val,key in c
-                                            li= key + " ~ " + val
-                                        li= c['Code Point']
+                                            tr
+                                                td=key
+                                                td=val
         div.flex-container
             div#ages.flex-item
             div#blocks.flex-item
