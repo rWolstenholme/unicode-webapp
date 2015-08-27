@@ -77,7 +77,7 @@ function parse(redClient){
             'hasEmoji' : hasEmoji,
             'emoji' : emoji
         };
-        chars.push(char)
+        chars.push(char);
         aliases = [];
         redClient.set(codePoint, JSON.stringify(char));
         if(count%100==0) console.log("Parsed "+count+" at codepoint "+codePoint);
