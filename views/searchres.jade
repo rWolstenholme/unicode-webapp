@@ -13,7 +13,10 @@ block head-extras
 block content
 
     div#topBits(style="padding:30px")
-        h1 You searched for #{search}
+        h1
+            | You searched for:
+            br
+            | !{search}
         h3 Code point count: #{chars.length}&nbsp&nbsp&nbsp&nbsp
             |Grapheme Clusters: #{realCount}
         button.toggle(onclick="toggleDisp()") Toggle grid display
