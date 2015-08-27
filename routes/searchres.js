@@ -53,7 +53,8 @@ function slimChars(chars){
                 'Character' : char['Character'],
                 'Code Point' : char['Code Point'],
                 'Name': char['Name'],
-                'Block Name': char['Block Name']
+                'Block Name': char['Block Name'],
+                'Combining Class' : char['Combining Class']
             }
         });
 }
