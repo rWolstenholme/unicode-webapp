@@ -15,35 +15,53 @@ router.get('/search', function(req, res, next) {
 
     var input = req.query.inp;
     var decoded = punycode.ucs2.decode(input);
+    var graphemes = gs.splitGraphemes(input);
+
+    var graphemeLengths =  _.map(graphemes,
+        function(grapheme){
+            return punycode.ucs2.decode(grapheme).length;
+        });
 
     var chars = [];
-    console.log(decoded);
+    console.log(graphemeLengths);
 
     for (var x = 0; x < decoded.length; x++)
     {
         var hex =  decoded[x].toString(16).toUpperCase();
-        console.log(hex);
 
         if (hex.length < 4) {
             hex = ("000" + hex).slice(-4);
         }
 
         redClient.get(hex,function(err,result){
-            console.log(err, result);
             chars.push(JSON.parse(result));
             if(chars.length==decoded.length){
-                charsLoaded(res,input,chars);
+                charsLoaded(res,input,chars,graphemeLengths);
             }
         });
     };
 });
 
-function charsLoaded(res, search, chars){
+function charsLoaded(res, search, chars, graphemeLengths){
 
-    var realCount = gs.countGraphemes(search);
+    var realCount = graphemeLengths.length;
     var toGraph = calculateGraphData(chars);
+    var lessInfo = slimChars(chars);
+    var graphemesInserted = insertGraphemes(lessInfo, graphemeLengths);
+    console.log(graphemesInserted);
 
-    res.render('searchres', { 'search': search, 'chars': slimChars(chars), 'realCount': realCount, 'toGraph': toGraph});
+    res.render('searchres', { 'search': search, 'chars': graphemesInserted, 'realCount': realCount, 'toGraph': toGraph});
+}
+
+function insertGraphemes(lessInfo, graphemeLengths){
+    var index = lessInfo.length;
+    graphemeLengths = graphemeLengths.reverse();
+    graphemeLengths.pop();
+    _.each(graphemeLengths, function(len){
+        index -= len;
+        lessInfo.splice(index,0,'Grapheme Break');
+    });
+    return lessInfo;
 }
 
 function slimChars(chars){

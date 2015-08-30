@@ -25,14 +25,20 @@ block content
             div#asText #{search}
             ul#asBoxed
                     each c in chars
-                        li.charHolder(class= c['Combining Class'] != null && c['Combining Class'] == "0" ? "" : "comb")
-                            a.tooltip(href='/U+'+c['Code Point'])!= c.Character + "</br>" + "U+" + c['Code Point']
-                                span
-                                    table
-                                        each val,key in c
-                                            tr
-                                                td=key
-                                                td=val
+                        if c == 'Grapheme Break'
+                            a.tooltip(href='#')
+                                li.gBreak
+                                    |&#8203;</br>&#8203;
+                                span Grapheme Break
+                        else
+                            li.charHolder(class= c['Combining Class'] != null && c['Combining Class'] == "0" ? "" : "comb")
+                                a.tooltip(href='/U+'+c['Code Point'])!= c.Character + "</br>" + "U+" + c['Code Point']
+                                    span
+                                        table
+                                            each val,key in c
+                                                tr
+                                                    td=key
+                                                    td=val
         div.flex-container
             div#ages.flex-item
             div#blocks.flex-item

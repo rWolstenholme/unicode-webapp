@@ -79,6 +79,18 @@ a.tooltip span
     background-color: #a0a0a0;
 }
 
+.gBreak
+{
+    display: inline-block;
+    width:10px;
+    height:70px;
+    margin:6px;
+    line-height:35px;
+    font-size:18px;
+    text-align:center;
+    background-color: #9DC4DF;
+}
+
 .toggle
 {
     padding:5px 15px;
