@@ -2,27 +2,6 @@
     display: inline-block;
 }
 
-a.tooltip {
-    outline:none;
-    color: inherit;
-}
-a.tooltip strong {line-height:30px;}
-a.tooltip:hover {text-decoration:none;}
-a.tooltip span {
-    z-index:10;display:none; padding:14px 20px;
-    margin-top:-30px; margin-left:28px;
-}
-a.tooltip:hover span{
-    display:inline; position:absolute; color:#111;
-    border:1px solid #DCA; background:#fffAF0;
-}
-
-a.tooltip span
-{
-    border-radius:4px;
-    text-align:left;
-}
-
 #paperHolder{
     text-align:center;
 }
@@ -47,6 +26,10 @@ a.tooltip span
 
 #asText{
     display: none;
+}
+
+#topBits{
+    padding:30px;
 }
 
 .flex-container {

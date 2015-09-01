@@ -65,3 +65,37 @@ h6,
 .nav li.right {
   float: right;
 }
+.fa-question-circle{
+  padding-left: 10px;
+  padding-right: 10px;
+  color:#9DC4DF;
+}
+a.tooltip {
+  outline:none;
+  color: inherit;
+}
+a.tooltip strong {line-height:30px;}
+a.tooltip:hover {text-decoration:none;}
+a.tooltip span {
+  z-index:10;
+  display:none;
+  padding:14px 20px;
+  margin-top:-30px;
+  margin-left:28px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight:normal;
+  max-width: 350px;
+}
+a.tooltip:hover span{
+  display:inline;
+  position:absolute;
+  color:#111;
+  border:1px solid #DCA;
+  background:#fffAF0;
+}
+a.tooltip span
+{
+  border-radius:4px;
+  text-align:left;
+}

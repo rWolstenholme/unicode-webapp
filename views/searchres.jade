@@ -12,13 +12,30 @@ block head-extras
 
 block content
 
-    div#topBits(style="padding:30px")
+    div#topBits
         h1
             | You searched for:
             br
             | !{search}
-        h3 Code point count: #{chars.length}&nbsp&nbsp&nbsp&nbsp
+        h3 Code point count: #{chars.length}
+            a.tooltip(href='#')
+                i.fa.fa-question-circle
+                span
+                    |In Unicode, each letter/symbol is constructed using one or more code points.
+                    br
+                    |Each system may render the code point for 'A' slightly differently, but it should look similar in every font.
+                    br
+                    |Below each code point is shown as a grey/red square
+            |&nbsp&nbsp&nbsp&nbsp
             |Grapheme Clusters: #{realCount}
+            a.tooltip(href='#')
+                i.fa.fa-question-circle
+                span
+                    |A grapheme cluster is a sequence of code points that are treated as a single unit.
+                    br
+                    |If you run a cursor along text, you will usually move one cluster at a time.
+                    br
+                    |Below the points between grapheme clusters are shown as blue rectangles.
         button.toggle(onclick="toggleDisp()") Toggle grid display
     div#paperHolder
         div#paper
@@ -40,7 +57,22 @@ block content
                                                     td=key
                                                     td=val
         div.flex-container
-            div#ages.flex-item
-            div#blocks.flex-item
-            div#sizes.flex-item
+            div.flex-item
+                a.tooltip(href='#')
+                    i.fa.fa-question-circle
+                    span
+                        |The version of Unicode that this code point was first defined in
+                div#ages
+            div.flex-item
+                a.tooltip(href='#')
+                    i.fa.fa-question-circle
+                    span
+                        |The section of code points each character belongs to. Block names are descriptive.
+                div#blocks
+            div.flex-item
+                a.tooltip(href='#')
+                    i.fa.fa-question-circle
+                    span
+                        |The amount of Bytes it would take to store the text in UTF-8, UTF-16, and UTF-32
+                div#sizes
     script(src='/javascript/search.js')
