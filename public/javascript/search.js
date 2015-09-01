@@ -1,9 +1,10 @@
 function toggleDisp(){
     var txt = document.getElementById('asText');
     var box = document.getElementById('asBoxed');
-    if (txt.style.display == 'none') {
-        box.style.display = 'none';
+    console.log(box.style.display);
+    if (box.style.display != 'none' || box.style.display == 'block') {
         txt.style.display = 'block';
+        box.style.display = 'none';
     }
     else {
         txt.style.display = 'none';

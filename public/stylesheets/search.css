@@ -30,6 +30,7 @@
 
 #topBits{
     padding:30px;
+    margin-bottom: 30px;
 }
 
 .flex-container {
@@ -86,4 +87,8 @@
 
 td{
     padding:10px;
+}
+.jumbotron {
+    padding: 60px 30px 50px 30px;
+    background-color: #eee;
 }
