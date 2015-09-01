@@ -5,4 +5,10 @@ block head-extras
     title='About Unicode UW'
     meta(description='Information for learning about Unicode')
 block content
-   h1(style="padding:30px") About Unicode
+   h1(style="padding:30px") Unicode
+   div#words
+       h2 Unicode is the most popular standard for encoding the world's different writing systems. This is the process of converting conceptual letters into data representations. Unicode is able to represent many languages and scripts from English and Chinese to Canadian Aboriginal Syllabics and emoji.
+       br
+       h2 Each character is assigned one or more code-points. Each code-point has a numerical value, name, and a conceptual "shape" that is defined by the font the computer is using.
+       br
+       h2 A sequence of unicode code-points is usually encoded using UTF-8, UTF-16, or UTF-32. This is how the conversion from code-points to bits is performed. A code-point is stored across one or more bytes in each encoding. Each of these has specific benefits. In UTF-32 all code-points use the same amount of bits (32). In UTF-16 all code points take at least 16 bits to encode, but high-value code-points of languages like Japanese and Chinese can be stored much more efficiently. UTF-8 is typically the best choice for English, as it can represent all characters in 8 bits.
