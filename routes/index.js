@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('index', { title: 'unicode-webapp' });
+    res.render('index', { title: 'Unicode-Website' });
 });
 
 module.exports = router;
