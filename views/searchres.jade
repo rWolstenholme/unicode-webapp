@@ -13,7 +13,7 @@ block head-extras
 block content
 
     div#topBits.jumbotron
-        h1
+        h1.youSearched
             | You searched for:
             br
             | !{search}
@@ -43,13 +43,16 @@ block content
             ul#asBoxed
                     each c in chars
                         if c == 'Grapheme Break'
-                            a.tooltip(href='#')
-                                li.gBreak
+                            li.gBreak
+                                a.tooltip(href='#')
                                     |&#8203;</br>&#8203;
-                                span Grapheme Break
+                                    span Grapheme Break
                         else
                             li.charHolder(class= c['Combining Class'] != null && c['Combining Class'] == "0" ? "" : "comb")
-                                a.tooltip(href='/U+'+c['Code Point'])!= c.Character + "</br>" + "U+" + c['Code Point']
+                                a.tooltip(href='/U+'+c['Code Point'])
+                                    par.symbol #{c.Character}
+                                    br
+                                    par.charPoint #{"U+" + c['Code Point']}
                                     span
                                         table
                                             each val,key in c

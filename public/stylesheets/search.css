@@ -1,3 +1,13 @@
+@font-face {
+    font-family: Symbola;
+    src: url(../fonts/Symbola.ttf);
+}
+
+@font-face {
+    font-family: Unifont;
+    src: url(../fonts/unifont.ttf);
+}
+
 .charList {
     display: inline-block;
 }
@@ -54,25 +64,36 @@
 .charHolder
 {
     display: inline-block;
-    width:70px;
-    height:70px;
+    width:80px;
+    height:80px;
     line-height:35px;
     margin:6px;
-    font-size:18px;
     text-align:center;
     background-color: #a0a0a0;
+    font-family: Sans-Serif, Serif, Symbola, Unifont;
+    vertical-align:middle;
+}
+
+.symbol
+{
+    font-size: 20px;
+}
+.charPoint
+{
+    font-size: 16px;
 }
 
 .gBreak
 {
     display: inline-block;
     width:10px;
-    height:70px;
+    height:80px;
     margin:6px;
     line-height:35px;
     font-size:18px;
     text-align:center;
     background-color: #9DC4DF;
+    vertical-align:middle;
 }
 
 .toggle
@@ -87,4 +108,9 @@
 
 td{
     padding:10px;
+}
+
+.youSearched
+{
+    font-family: Sans-Serif, Serif, Symbola, Unifont;
 }
