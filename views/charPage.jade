@@ -8,7 +8,7 @@ block head-extras
 block content
 
     div#charBig= char.Character
-    h1(style="padding:30px") You searched for #{char.Character}
+    h1.youSearched(style="padding:30px") You searched for #{char.Character}
     table#details
         each val,key in char
             tr

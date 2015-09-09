@@ -42,3 +42,7 @@ td,th {
 table tr:nth-child(2n-1) td {
     background-color: #f2f2f2;
 }
+.youSearched
+{
+    font-family: Sans-Serif, Serif, Symbola, Unifont;
+}
