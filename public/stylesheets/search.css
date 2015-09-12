@@ -120,3 +120,7 @@ td{
 #info{
     flex-grow:5;
 }
+
+#legend{
+    text-align:center;
+}
