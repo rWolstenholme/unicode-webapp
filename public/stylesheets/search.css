@@ -52,8 +52,10 @@
 }
 
 .flex-item {
-    order: 0;
     align-self: auto;
+}
+
+.graph{
     width: 320px;
 }
 
@@ -113,4 +115,8 @@ td{
 .youSearched
 {
     font-family: Sans-Serif, Serif, Symbola, Unifont;
+}
+
+#info{
+    flex-grow:5;
 }

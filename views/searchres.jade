@@ -12,31 +12,53 @@ block head-extras
 
 block content
 
-    div#topBits.jumbotron
-        h1.youSearched
-            | You searched for:
-            br
-            | !{search}
-        h3 Code point count: #{chars.length}
-            a.tooltip(href='#')
-                i.fa.fa-question-circle
-                span
-                    |In Unicode, each letter/symbol is constructed using one or more code points.
-                    br
-                    |Each system may render the code point for 'A' slightly differently, but it should look similar in every font.
-                    br
-                    |Below each code point is shown as a grey/red square
-            |&nbsp&nbsp&nbsp&nbsp
-            |Grapheme Clusters: #{realCount}
-            a.tooltip(href='#')
-                i.fa.fa-question-circle
-                span
-                    |A grapheme cluster is a sequence of code points that are treated as a single unit.
-                    br
-                    |If you run a cursor along text, you will usually move one cluster at a time.
-                    br
-                    |Below the points between grapheme clusters are shown as blue rectangles.
-        button.toggle(onclick="toggleDisp()") Toggle grid display
+    div#topBits.jumbotron.flex-container
+        div#info.flex-item
+            h1.youSearched
+                | You searched for:
+                br
+                | !{search}
+            h3 Code point count: #{chars.length}
+                a.tooltip(href='#')
+                    i.fa.fa-question-circle
+                    span
+                        |In Unicode, each letter/symbol is constructed using one or more code points.
+                        br
+                        |Each system may render the code point for 'A' slightly differently, but it should look similar in every font.
+                        br
+                        |Below each code point is shown as a grey/red square
+                |&nbsp&nbsp&nbsp&nbsp
+                |Grapheme Clusters: #{realCount}
+                a.tooltip(href='#')
+                    i.fa.fa-question-circle
+                    span
+                        |A grapheme cluster is a sequence of code points that are treated as a single unit.
+                        br
+                        |If you run a cursor along text, you will usually move one cluster at a time.
+                        br
+                        |Below the points between grapheme clusters are shown as blue rectangles.
+            button.toggle(onclick="toggleDisp()") Toggle grid display
+
+        table#legend.flex-item
+            caption Legend
+            tr
+                td
+                    li.charHolder
+                        |A
+                        br
+                        |U+0041
+                td
+                    li.charHolder.comb
+                        |?
+                        br
+                        |U+341
+                td
+                    li.gBreak
+            tr
+                td Code Point non-combining character
+                td Code Point combining character
+                td Grapheme Break
+
     div#paperHolder
         div#paper
             div#asText #{search}
@@ -59,20 +81,21 @@ block content
                                                 tr
                                                     td=key
                                                     td=val
+
         div.flex-container
-            div.flex-item
+            div.flex-item.graph
                 a.tooltip(href='#')
                     i.fa.fa-question-circle
                     span
                         |The version of Unicode that this code point was first defined in
                 div#ages
-            div.flex-item
+            div.flex-item.graph
                 a.tooltip(href='#')
                     i.fa.fa-question-circle
                     span
                         |The section of code points each character belongs to. Block names are descriptive.
                 div#blocks
-            div.flex-item
+            div.flex-item.graph
                 a.tooltip(href='#')
                     i.fa.fa-question-circle
                     span
