@@ -43,14 +43,14 @@ router.get('/search', function(req, res, next) {
 });
 
 function charsLoaded(res, search, chars, graphemeLengths){
-
+    var codePointCount = chars.length;
     var realCount = graphemeLengths.length;
     var toGraph = calculateGraphData(chars);
     var lessInfo = slimChars(chars);
     var graphemesInserted = insertGraphemes(lessInfo, graphemeLengths);
     console.log(graphemesInserted);
 
-    res.render('searchres', { 'search': search, 'chars': graphemesInserted, 'realCount': realCount, 'toGraph': toGraph});
+    res.render('searchres', { 'search': search, 'chars': graphemesInserted, 'realCount': realCount, 'toGraph': toGraph, 'codePointCount': codePointCount});
 }
 
 function insertGraphemes(lessInfo, graphemeLengths){
